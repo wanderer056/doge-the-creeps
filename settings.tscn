@@ -1,0 +1,192 @@
+[gd_scene load_steps=7 format=3 uid="uid://blfsfy86e6vr5"]
+
+[ext_resource type="Script" path="res://settings.gd" id="1_muq7n"]
+[ext_resource type="PackedScene" uid="uid://e1ncqjmu4wf6" path="res://toggle_button.tscn" id="1_wlb13"]
+[ext_resource type="FontFile" uid="uid://ty65ksdry4iy" path="res://fonts/Xolonium-Regular.ttf" id="2_q6n33"]
+[ext_resource type="Texture2D" uid="uid://cy6wndjyod70v" path="res://art/home_drawer_icon.png" id="3_uti6a"]
+
+[sub_resource type="Animation" id="Animation_5t6o6"]
+resource_name = "slide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(39, 35), Vector2(-39, 35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(106, 35), Vector2(39, 35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppgm3"]
+_data = {
+"slide": SubResource("Animation_5t6o6")
+}
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_muq7n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32549, 0.752941, 0.6, 1)
+
+[node name="MusicButton" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -119.0
+offset_right = 144.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toggle_button_music" parent="MusicButton" instance=ExtResource("1_wlb13")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 11.0
+offset_right = 383.0
+offset_bottom = 83.0
+scale = Vector2(0.5, 0.5)
+
+[node name="MusicLabel" type="Label" parent="MusicButton"]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_q6n33")
+theme_override_font_sizes/font_size = 40
+text = "Music: "
+
+[node name="SFXButton" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -40.0
+offset_right = 144.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toggle_button_sfx" parent="SFXButton" instance=ExtResource("1_wlb13")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 11.0
+offset_right = 383.0
+offset_bottom = 83.0
+scale = Vector2(0.5, 0.5)
+
+[node name="SfxLabel" type="Label" parent="SFXButton"]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_q6n33")
+theme_override_font_sizes/font_size = 40
+text = "SFX:"
+
+[node name="SoundButton" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = 40.0
+offset_right = 144.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="toggle_button_sound" parent="SoundButton" instance=ExtResource("1_wlb13")]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 11.0
+offset_right = 383.0
+offset_bottom = 83.0
+scale = Vector2(0.5, 0.5)
+
+[node name="SoundLabel" type="Label" parent="SoundButton"]
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("2_q6n33")
+theme_override_font_sizes/font_size = 40
+text = "Sound: "
+
+[node name="ReturnButton" type="Button" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -170.0
+offset_right = 35.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(35, 35)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReturnButton"]
+position = Vector2(39, 35)
+texture = ExtResource("3_uti6a")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="ReturnButton"]
+position = Vector2(106, 35)
+texture = ExtResource("3_uti6a")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ReturnButton"]
+libraries = {
+"": SubResource("AnimationLibrary_ppgm3")
+}
+autoplay = "slide"
+
+[node name="ButtonAnimationTimer" type="Timer" parent="ReturnButton"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="toggled" from="MusicButton/toggle_button_music" to="." method="_on_toggle_button_music_toggled"]
+[connection signal="toggled" from="SFXButton/toggle_button_sfx" to="." method="_on_toggle_button_sfx_toggled"]
+[connection signal="toggled" from="SoundButton/toggle_button_sound" to="." method="_on_toggle_button_sound_toggled"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="timeout" from="ReturnButton/ButtonAnimationTimer" to="." method="_on_button_animation_timer_timeout"]

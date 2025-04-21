@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfle7a0dds4mc"]
+
+[ext_resource type="Script" path="res://sound_manager.gd" id="1_1xnow"]
+[ext_resource type="AudioStream" uid="uid://be3tcjv6sdrlq" path="res://art/mouse-click-153941.mp3" id="1_hpsmb"]
+[ext_resource type="AudioStream" uid="uid://cp7ymh043q55b" path="res://art/Naruto Soundtrack- Daylight Of Konoha.mp3" id="3_qfmfg"]
+[ext_resource type="AudioStream" uid="uid://gr1ro6pdnw3m" path="res://art/House In a Forest Loop.ogg" id="4_sbvdv"]
+[ext_resource type="AudioStream" uid="uid://bt1u7c1fbecsv" path="res://art/gameover.wav" id="5_ovvlg"]
+[ext_resource type="AudioStream" uid="uid://uahyrrd8hrf5" path="res://art/notification-sound-7062.mp3" id="6_ktc7f"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_1xnow")
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("1_hpsmb")
+volume_db = 5.0
+
+[node name="BackgroundPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qfmfg")
+autoplay = true
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sbvdv")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ovvlg")
+
+[node name="PopSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("6_ktc7f")

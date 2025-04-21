@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh6evsoks4nu5"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_8rbp6"]
+[ext_resource type="FontFile" uid="uid://ty65ksdry4iy" path="res://fonts/Xolonium-Regular.ttf" id="2_ah5ql"]
+[ext_resource type="Texture2D" uid="uid://b2uhlgvt33i1v" path="res://art/pause-button-png-29660.png" id="3_xxlmo"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_8bshx"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_4hta0"]
+events = [SubResource("InputEventAction_8bshx")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8rbp6")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 81.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 64
+text = "0"
+autowrap_mode = 2
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.5
+offset_top = -40.5
+offset_right = 306.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the 
+creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_4hta0")
+text = "Start"
+
+[node name="RestartButton" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 236.0
+offset_bottom = 226.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_4hta0")
+text = "RESTART"
+
+[node name="ResumeButton" type="Button" parent="."]
+process_mode = 2
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 140.0
+offset_right = 236.0
+offset_bottom = 226.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_4hta0")
+text = "RESUME"
+
+[node name="HomeButton" type="Button" parent="."]
+process_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = 140.0
+offset_right = -14.0
+offset_bottom = 226.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ah5ql")
+theme_override_font_sizes/font_size = 40
+shortcut = SubResource("Shortcut_4hta0")
+text = "HOME"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PauseButton" type="TextureButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -65.0
+offset_top = 16.0
+offset_right = 535.0
+offset_bottom = 716.0
+grow_horizontal = 0
+scale = Vector2(0.09, 0.09)
+texture_normal = ExtResource("3_xxlmo")
+
+[node name="ResumeTimer" type="Timer" parent="."]
+process_mode = 2
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+process_mode = 2
+title = "Are you sure?"
+position = Vector2i(50, 300)
+size = Vector2i(400, 100)
+ok_button_text = "YES"
+cancel_button_text = "NO"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HomeButton" to="." method="_on_home_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="ResumeTimer" to="." method="_on_resume_timer_timeout"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnrh3thk5jm2t"]
+
+[ext_resource type="FontFile" uid="uid://ty65ksdry4iy" path="res://fonts/Xolonium-Regular.ttf" id="1_mbc0h"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_p046o"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p046o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32549, 0.752941, 0.6, 1)
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.5
+offset_right = 306.5
+offset_bottom = 162.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_mbc0h")
+theme_override_font_sizes/font_size = 64
+text = "Dodge the 
+creeps!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="." groups=["Buttons"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -43.0
+offset_right = 121.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mbc0h")
+theme_override_font_sizes/font_size = 64
+text = "START"
+
+[node name="SettingsButton" type="Button" parent="." groups=["Buttons"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = 90.0
+offset_right = 161.5
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mbc0h")
+theme_override_font_sizes/font_size = 64
+text = "SETTING"
+
+[node name="ExitButton" type="Button" parent="." groups=["Buttons"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = 220.0
+offset_right = 161.5
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mbc0h")
+theme_override_font_sizes/font_size = 64
+text = "EXIT"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Do you really want to quit?"
+position = Vector2i(50, 300)
+size = Vector2i(400, 100)
+ok_button_text = "YES"
+cancel_button_text = "NO"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
